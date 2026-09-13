@@ -49,7 +49,7 @@ class MainActivity : AppCompatActivity() {
             override fun onShowFileChooser(
                 webView: WebView?,
                 filePath: ValueCallback<Array<Uri>>?,
-                fileChooserParams: FileChooserParams?
+                fileChooserParams: WebChromeClient.FileChooserParams
             ): Boolean {
                 this@MainActivity.filePathCallback?.onReceiveValue(null)
                 this@MainActivity.filePathCallback = filePath
@@ -77,7 +77,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun launchGallery(params: FileChooserParams?) {
+    private fun launchGallery(params: WebChromeClient.FileChooserParams) {
         val intent = Intent(Intent.ACTION_OPEN_DOCUMENT).apply {
             addCategory(Intent.CATEGORY_OPENABLE)
             type = "image/*"
